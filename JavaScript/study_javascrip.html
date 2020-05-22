@@ -1,0 +1,67 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>学习JavaScript</title>
+  </head>
+  <body>
+      <script>
+          function sayHello(name){
+            document.writeln("Hello world!",name);
+          }
+
+          sayHello("zhujiafu");
+
+          var study_var=function(name){
+              var strl="字符串";
+              var num=15;
+              var f=3.1415927;
+              age=23;
+              var cars=new Array("A","B","C");
+              document.writeln("<br>");
+              document.writeln(strl);
+              document.writeln("<br>");
+              document.writeln(num);
+              document.writeln("<br>");
+              document.writeln(f);
+              document.writeln("<br>");
+              document.writeln(cars);
+              document.writeln("<br>");
+              document.writeln(age);
+              document.writeln("<br>");
+              document.writeln(name);
+          }("zhujiafu");
+
+         // study_var()
+         // document.writeln(num);
+            document.writeln("<br>");
+            document.writeln(age);
+            document.writeln("<br>");
+
+          var sum=function(start,end){
+              var s=0
+              var i;
+              for (i=start;i<=end;i++){
+                  s=s+i;
+              }
+              document.writeln("sum=",s);
+          }(1,100);
+
+          document.writeln("<br>");
+          var sum_while=function(start,end){
+              var s=0;
+              var i=start;
+              while (i <= end){
+                  if (i % 2 == 1){
+                   // document.writeln(i);
+                    s=s+i;
+                  }
+                  i++;
+              }
+              document.writeln("sum_while=",s);
+          }
+          sum_while(1,100);
+      </script>
+</body>
+</html>
