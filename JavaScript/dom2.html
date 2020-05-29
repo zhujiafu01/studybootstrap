@@ -1,0 +1,21 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dom2对象操作</title>
+  </head>
+  <body>
+   <input type="number" id="txt">
+   <input type="number" value="累加">
+    <script>
+        (function(){
+            var input_txt=document.querySelector('#txt');
+            var bth=document.querySelector('#bth_add');
+            bth.addEventListener('click',function(e){
+                input_txt.value++;
+            })
+        })();
+    </script>
+  </body>
+</html>

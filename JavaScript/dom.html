@@ -1,0 +1,31 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dom对象操作</title>
+  </head>
+  <body>
+   <input name="input" id="input1" value="1" onclick="getValue()"> <br>
+   <input name="input" id="input2" value="2"> <br>
+   <input name="input" id="input3" value="3"> <br>
+   <input type="button" value="元素个数" onclick="getElements()">
+   <input type="button" value="累加" onclick="increase()">
+    <script>
+        function getValue(){
+            var i=document.getElementById("input1");
+            alert(i.value);
+        }
+
+        function getElements(){
+            var a=document.getElementsByName("input");
+            alert("have " +a.length+" input element, "+" second input is "+a[2].value);
+        }
+
+        function increase(){
+            var i2=document.querySelector('#input2');
+            i2.value++;
+        }
+    </script>
+  </body>
+</html>

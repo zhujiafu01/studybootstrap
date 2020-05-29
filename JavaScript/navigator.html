@@ -1,22 +1,28 @@
 <!doctype html>
   <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>浏览器对象</title>
   </head>
+
   <body>
     <script>
-        console.log('window inner size:'+window.innerwidth+'x'+window.
-        innerHeight);
+        console.log('window inner size: '+ window.innerWidth + ' x '+window.innerHeight);
 
-        consile.log('appName='+navigator.appName);
-        consile.log('appVersion+'+navigator.appVersion);
-        consile.log('language='+navigator.language);
-        consile.log('platform='+navigator.platform);
-        consile.log('userAgent='+navigator.userAgent);
-        consile.writen('userAgent='+navigator.userAgent);
-        consile.writen('userAgent='+screen.width+'x'+screen.height);
+        console.log('appName =' + navigator.appName);
+        console.log('appVersion = ' + navigator.appVersion);
+        console.log('language='+navigator.language);
+        console.log('platform='+navigator.platform);
+        console.log('userAgent='+navigator.userAgent);
+        document.writeln('userAgent='+navigator.userAgent);
+        document.writeln('Screen size='+screen.width+'x'+screen.height);
+        document.writeln('url=',location.href);
+        document.writeln('protocl=',location.protocol);
+        document.title="good good study";
     </script>
-</body>
+    
+      
+  </body>
 </html>
