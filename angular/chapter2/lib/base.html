@@ -1,0 +1,28 @@
+<!doctype html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>模块与控制器</title>
+  </head>
+  <body ng-app="app">
+      
+    <div ng-controller="mainController">
+        <button ng-click='say()'>欢迎 欢迎</button>
+        {{name}}
+    </div>
+    <script src="angular.min.js"> 
+    </script>
+    <script>   
+     var app=angular.module("app",[]);
+     app.controller('mainController',function($scope){
+         $scope.name="朱佳富"
+         $scope.say=function(){
+             $scope.welcome="欢迎 欢迎"+$scope.name +"!";
+         }
+     })
+    </script>
+      
+  </body>
+</html>
