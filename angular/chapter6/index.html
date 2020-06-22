@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>index</title>
+</head>
+<body ng-app="app">
+    <div ng-controller="mainController">
+        <input type="text" ng-model="guestInfo.name">
+        <input type="text" ng-model="guestInfo.phone">
+        <button ng-click="invite()">邀请</button>
+        <br>
+        {{guestInfo}}
+        <div style="padding-top: 30px; padding-bottom: 30px;">
+            <a  href="#!/refuse">显示全部</a>
+            <a  href="#!/refuse">显示拒绝</a>
+        </div>
+
+        <div>
+            <table>
+                <thead>
+                    <th>名字</th>
+                    <th>电话</th>
+                </thead>
+                <tbody ng-repeat="guest in guests">
+                    <td>{{guest.name}}</td>
+                    <td>{{guest.phone}}</td>
+                    <td>{{guest.state}}</td>
+                    <td>
+                        <button ng-if="guest.state=='邀请中'" ng-click="guest.refuse()" >拒绝邀请</button>
+                        <button ng-click="remove(guest)">删除</button>
+                    </td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="lib/angular.min.js"></script>
+    <script src="js/ModelService.js"></script>
+    <script>
+        //在输入的过程中，点击邀请按钮前文本框下的显示内容
+        var app = angular.module('app', ['nameList.model']);
+        app.controller('mainController', function ($scope, $location, modelService){
+            var state = Guest.ALL;
+            var guestInfo = $scope.guestInfo = {
+                name: '',
+                phone: ''
+            };
+//相当于把输入的值添加到一个列表中
+            $scope.invite = function () {
+                var msg = modelService.add(guestInfo.name, guestInfo.phone);
+                guestInfo.name = '';
+                guestInfo.phone = '';
+                switch (msg.code) {
+                    case 0:
+                        $scope.guests = modelService.getList(state);
+                        break;
+                }
+            };
+//删除按钮
+            $scope.remove = function (guest) {
+                modelService.remove(guest);
+                $scope.guests = modelService.getList(state);
+            }
+//查看所有邀请后的内容
+            $scope.location = $location;
+            $scope.$watch('location.path()', function (newValue) {
+                switch (newValue) {
+                    case '/all':
+                        state = Guest.ALL;
+                        break;
+//拒绝后的所有内容
+                    case '/refuse':
+                        state = Guest.REFUSE;
+                        break;
+                }
+                // 把数据从模型移动到视图模型。
+                $scope.guests = modelService.getList(state);
+            })
+
+        })
+    </script>
+</body>
+</html>
