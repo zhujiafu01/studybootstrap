@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-style</title>
+  </head>
+  <body>
+    <div ng-app="app">
+       <div ng-controller="MainController">
+        <div style="height: 100px;" ng-style="myStyle">
+          每天都开心
+        </div>
+       </div> 
+    </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+      //创建一个Angularjs模块
+      var app=angular.module('app', []);
+      app.controller('Maincontroller', function ($scope) {
+       //在作用域内定义样式属性myStyle
+       $scope.mystyle={
+         "background-color":"yellow",
+         "width":"100px",
+         "font-size":"20px",
+         "padding":"50px"
+       }
+      });
+  </script>
+</body>
+</html>

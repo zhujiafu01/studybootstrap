@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-if</title>
+  </head>
+  <body ng-app>
+       添加 HTML
+       <!--使用ng-init初始化属性myVar,值为false-->
+         <input type="checkbox" ng-model="myVar" ng-init="myVar=false">
+         <div ng-if="myVar">
+             <h1>我来了</h1>
+         </div>
+  <script src="lib/angular.min.js"></script>
+</body>
+</html>

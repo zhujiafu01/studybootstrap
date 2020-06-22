@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-repeat</title>
+  </head>
+  <body>
+    <div ng-app="demo">
+      <div ng-controller="MainController">
+          <table style="border: solid 1px;">
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+            <th>相关信息</th>
+        </tr>
+        <!--ng-repeat会为每一个iem都绑定一个作用域,作用域中除了指定的每一项的数据对象外，
+            还有$index $first $last等数据,这些都是Angularjs自动生成的-->
+            <tr ng-repeat="item in users">
+              <td>{{item.name}}</td>
+              <td>{{item.sex}}</td>
+              <td>{{item.age}}</td>
+              <td>index:{{$index}},first:{{$first}},last:{{$last}},
+                  middle:{{$middle}},even{{$even}},odd:{{$odd}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+  <script src="lib/angular.min.js"></script>
+<script>
+    var demo=angular.module('demo',[]);
+    demo.controller('MainController',function ($scope){
+    //定义数组users
+    $scope.users=[
+        {name:"张三",sex:"男",age:24},
+        {name:"李茹",sex:"女",age:12},
+        {name:"王筱",sex:"男",age:36},
+        {name:"赵莫",sex:"女",age:50},
+    ];
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div ng-app = "demo">
+        <div ng-controller = "MainController">
+            <input type = "number" ng-model = "data">
+            <button onclick="plusOne()">加 1</button>
+        </div>
+    </div>
+    <script src = "angular.min.js"></script>
+    <script>
+        var demo = angular.module('demo',[]);
+        demo.controller('MainController',function($rootScope,$scope){
+            $scope.data = 1;
+            //将$scope赋值给window对象的scope
+            window.scope = $scope
+        });
+        //自定义函数修改作用域中的data
+        function plusOne(){
+            window.scope.data+=1;
+        }
+    </script>
+
+
+</body>
+</html>

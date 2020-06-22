@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-click</title>
+  </head>
+  <body>
+    <div ng-app="app">
+       <div ng-controller="MainController">
+         <span ng-bind="message"></span>
+         <br/>
+         <button ng-click="clickHandler()" onclick="onclickHandler()">按钮</button>
+        </div> 
+    </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+      //创建一个Angularjs模块
+      var app=angular.module('app', []);
+      app.controller('mainController', function ($scope) {
+       //定义属性ng-click用于绑定span标签上
+       $scope.message="等待操作";
+       //定义属性ng-click需要绑定的事件处理函数
+       $scope.clickHandler=function (){
+        $scope.message='ng-click事件被触发'
+       }
+      });
+      //定义onclick事件触发调用函数
+      function onclickHandler (){
+          console.log("onclick事件被触发");
+      }
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>track by</title>
+  </head>
+  <body>
+  <div ng-app="demo">
+      <div ng-controller="MainController">
+      <table>
+          <!--遍历数组-->
+          <tr ng-repeat="item in numbers track by $index">
+             <td>{{item}}</td>
+             <td>$index:{{$index}}</td>
+          </tr>
+      </table>
+    </div>
+</div>
+  <script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('demo',[]);
+    app.cpntroller('mainController',function ($scope){
+     //定义数组
+     $scope.numbers=[1,1,4,2,5];
+    });
+</script>
+</body>
+</html>

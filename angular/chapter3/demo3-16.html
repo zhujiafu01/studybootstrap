@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>独立作用域</title>
+  </head>
+  <body>
+  <div ng-app="app">
+     <div ng-controller='insulate'>
+         <user-info user-name="小明" age='num' speak='sayHello(name)'></user-info>
+     </div>
+</div>
+  <script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    //定义父作用域
+    app.controller('insulate',function ($scope) {
+        //定义父作用域的属性
+       $scope.num='17'
+       //定义副作用域的函数
+       $scope.sayHello=function(name){
+           alert("Hello "+name);
+       }
+    });
+    //添加自定义指令
+    app.directive('userInfo',function(){
+      return{
+          restrict:'EA',
+          template:'姓名:<input type="text" ng-model="userName" /><br/>'+'年龄:{{age}} <br/>'
+          +'<button class="btn btn-default"ng-click="speak({name:userName})">speaking</button><br/>',
+          scope:{
+              userName:'@ ',
+              age:'=',
+              speak:'&'
+          }
+      }
+    });
+</script>
+</body>
+</html>

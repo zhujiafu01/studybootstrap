@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-change</title>
+  </head>
+  <body ng-app="myApp">
+       <div ng-controller="mainController">
+         <p>在输入框中输入一些信息</p>
+         <input type="text" ng-change="myFunc()" ng-model="myValue" />
+         <p>{{message}}</p>
+        </div> 
+    </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+      angular.module('myApp',[])
+      .controller('mainController', function($scope){
+        //定义属性message,用于插值语法
+        $scope.message="等待操作";
+        //定义函数用于绑定ng-change指令
+        $scope.myFunc=function() {
+          $scope.message="输入框被修改了";
+        };
+      });
+  </script>
+</body>
+</html>

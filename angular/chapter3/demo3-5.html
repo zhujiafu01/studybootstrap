@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-readonly和on-disabled</title>
+  </head>
+  <body>
+    <div ng-app="app">
+       <div ng-controller="MainController">
+         <form action="">
+            <input name="id1" type="text" ng-model="text" ng-readonly="boolean">
+            <br/>
+            <input name="id2" type="text" ng-model="text" ng-disabled="boolean">
+            <br/><br/>
+            <input type="submit" value="提交">
+        </form>
+        </div> 
+    </div>
+  <script src="lib/angular.min.js"></script>
+  <script>
+      //创建一个Angularjs模块
+      var app=angular.module('app', []);
+      app.controller('Maincontroller', function ($scope) {
+       //定义属性text用于绑定ng-model1
+       $scope.text='some text';
+       //定义属性boolean用于绑定ng-readonly和on-disabled
+       $scope.boolean=true;
+      });
+  </script>
+</body>
+</html>

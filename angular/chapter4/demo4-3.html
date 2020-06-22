@@ -1,0 +1,39 @@
+<!doctype html>
+  <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JavaScript依赖注入</title>
+  </head>
+  <body>
+    
+    <script > 
+        var registry={
+            food:{cake:'蛋糕'},
+            fruit:{apple:'苹果'}
+    };
+        var getFuncParams=function(func){
+            var matches=
+            func.toString().match(/^function\s*[^\(]*\(\s*([^\)]*)\)/m);
+            if (matches && matches.length>1)
+                return matches[1].replace(/\s+/,'').split(',');
+                return [];
+        };
+        var setFuncParams=function (params) {
+            for (var i in params) {
+                params[i]=registry[params[i]];
+            }
+            return params;
+        }
+        function inject(func) {
+            var obj={};
+            func.apply(func,setFuncParams(getFuncParams(func)));
+            return obj;
+        }
+        var eat=function(food){
+            console.log('吃到'+food.cake+'了');
+        }
+        inject (eat);
+    </script>
+  </body>
+</html>

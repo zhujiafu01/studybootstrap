@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-repeat</title>
+  </head>
+  <body>
+  <div ng-app="demo">
+      <div ng-controller="MainController">
+      <table style="border: solid 1px;">
+          <tr>
+             <td>姓名</td>
+             <td>性别</td>
+             <td>年龄</td>
+          </tr>
+          <tr ng-repeat="(key,value) in users">
+         <td>{{key}}</td>
+         <td>{{value.sex}}</td>
+         <td>{{value.age}}</td>
+          </tr>
+      </table>
+    </div>
+</div>
+  <script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('demo',[]);
+    app.cpntroller('mainController',function ($scope) {
+        $scope.users={
+        "张三":{age: 24,sex: "男"},
+        "李舞":{age: 12,sex: "女"},
+        "王午":{age: 36,sex: "男"},
+        "赵陆":{age: 50,sex: "女"}
+    }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ng-switch</title>
+  </head>
+  <body>
+  <div ng-app="app">
+      <div ng-controller="mainController">
+        <div ng-switch="name">
+         <div ng-switch-when="张三">
+           this is 张三
+         </div>
+         <div ng-switch-when="李四">
+            this is 李四
+          </div>
+          <div ng-switch-default>
+            找不到此人
+          </div>
+       </div>
+    </div>
+</div>
+  <script src="lib/angular.min.js"></script>
+<script>
+    var app=angular.module('app',[]);
+    app.cpntroller('mainController',function ($scope){
+     $scope.name='李四'
+    });
+</script>
+</body>
+</html>

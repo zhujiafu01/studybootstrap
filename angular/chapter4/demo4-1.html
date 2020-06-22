@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作用域上的数据监听</title>
+</head>
+<body>
+<div ng-app="demo">
+    <div ng-controller="MainController"/ >
+    <input type="text" ng-model="data"/>
+    <p>{{data}}</p>
+</div>
+</div>
+<script src="lib/angular.js"></script>
+<script>
+    var demo=angular.module('demo',[]);
+    demo.controller('MainController',function($scope){
+        $scope.data="hello world";
+        //当某条数据发生变化时，执行一些自定义操作
+        //当这行代码表示：data属性发生改变时，执行回调函数
+        $scope.$watch('data',function (newValue,oldValue) {
+            console.log('data has changed',',',newValue,',',oldValue);
+        });
+    });
+</script>
+</body>
+</html>
